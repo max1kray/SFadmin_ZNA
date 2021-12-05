@@ -1,2 +1,2 @@
 *.yml
-!ansible/playbooks/add-user.yml
+!ansible/playbooks/add_user.yml
