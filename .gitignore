@@ -1,0 +1,3 @@
+*.yml
+!ansible/playbooks/zabbix-agent.yml
+!ansible/playbooks/redis.yml
