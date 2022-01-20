@@ -1,0 +1,14 @@
+---
+
+- hosts: ubuntu
+  become: true
+  become_method: sudo
+  become_user: root
+
+  tasks:
+  - name: downloadl filebeat
+    command: curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-7.16.3-amd64.deb
+  - name: install filebeat
+    command: dpkg -i filebeat-7.16.3-amd64.deb
+    when:
+      ansible_os_family == "Debian"
