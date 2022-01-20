@@ -1,0 +1,20 @@
+---
+
+- hosts: ubuntu
+  become: true
+  become_method: sudo
+  become_user: root
+
+  tasks:
+  - name: install php7.4
+    apt:
+      name=php7.4
+      state=latest
+    when:
+      ansible_os_family == "Debian"
+  - name: install php7.4-fpm
+    apt:
+      name=php7.4-fpm
+      state=latest
+    when:
+      ansible_os_family == "Debian"
