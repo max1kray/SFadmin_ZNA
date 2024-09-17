@@ -1,0 +1,10 @@
+---
+
+- hosts: ubuntu
+  become: true
+  become_method: sudo
+  become_user: root
+
+  tasks:
+  - name: install apache2
+    command: apt install apache2 -y

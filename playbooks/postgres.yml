@@ -1,0 +1,13 @@
+---
+
+- hosts: rhel
+  become: yes
+  tasks:
+  -  name: activate module psql12
+     command: dnf module enable postgresql:12 -y
+  -  name: InstallPostgreSQL-12
+     yum:
+        name=postgresql-server
+        state=latest
+     when:
+        ansible_os_family == "RedHat"
