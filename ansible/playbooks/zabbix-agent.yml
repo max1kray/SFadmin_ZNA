@@ -1,0 +1,22 @@
+---
+
+- hosts: web
+  become: true
+  become_method: sudo
+  become_user: root
+
+  tasks:
+  - name: install agent
+    command: apt install zabbix-agent -y
+  - name: copy config  
+    template:
+     src: /etc/ansible/templates/zabbix_agentd.conf
+     dest: /etc/zabbix/zabbix_agentd.conf
+     mode: 775
+
+  handlers:
+  - name: zabbix-agent systemd
+    systemd:
+     name: zabbix-agent.service
+     enabled: yes
+     state: started
